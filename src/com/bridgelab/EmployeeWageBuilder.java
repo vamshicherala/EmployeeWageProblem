@@ -9,15 +9,17 @@ public class EmployeeWageBuilder {
     public static final int FULL_DAY_HOUR = 8;
     public static final int PART_DAY_HOUR = 4;
     public static final int NO_OF_WORKING_DAYS = 20;
+    public static final int MAX_WORKING_HOURS = 100;
 
     public static void main(String[] args) {
         System.out.println("**Welcome to Employee Wage Computation Program On Master Branch**");
         Random rand = new Random();
-        int empcheck = (int) (rand.nextFloat() * 10) % 3;
         int calcEmpWage = 0;
         int empHrs = 0;
-        int totalEmpWage = 0;
-        for (int day = 0; day < NO_OF_WORKING_DAYS; day++) {
+        int totalEmpHours = 0,totalWorkingDays = 0,totalEmpWage = 0;
+        while (totalEmpHours<=MAX_WORKING_HOURS && totalWorkingDays < NO_OF_WORKING_DAYS){
+            totalWorkingDays++;
+            int empcheck = (int) (rand.nextFloat() * 10) % 3;
             switch (empcheck) {
                 case IS_PRESENT:
                     empHrs = FULL_DAY_HOUR;
@@ -30,6 +32,8 @@ public class EmployeeWageBuilder {
             }
             calcEmpWage = empHrs * WAGE_PER_HOUR;
             totalEmpWage = totalEmpWage + calcEmpWage;
+            totalEmpHours = totalEmpHours + empHrs;
+            System.out.println("days:"+totalWorkingDays+"hours:"+totalEmpHours);
         }
             System.out.println("Employee Wage :" + totalEmpWage);
 
