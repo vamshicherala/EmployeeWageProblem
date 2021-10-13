@@ -14,15 +14,21 @@ public class EmployeeWageBuilder {
         Random rand = new Random();
         int empcheck = (int) (rand.nextFloat()*10)%3;
         int calcEmpWage = 0;
-        if (empcheck == IS_PRESENT) {
-            System.out.println("Employee is Present");
-            calcEmpWage = WAGE_PER_HOUR * FULL_DAY_HOUR;
-        } else if (empcheck == IS_PARTTIME) {
-            System.out.println("Employee is Parttime");
-            calcEmpWage = WAGE_PER_HOUR * PART_DAY_HOUR;
-        }else {
-            System.out.println("Employee is Absent");
+        int empHrs = 0;
+        switch (empcheck){
+            case IS_PRESENT :
+                empHrs = FULL_DAY_HOUR;
+                System.out.println("Employee Fulltime");
+                break;
+            case IS_PARTTIME:
+                empHrs = PART_DAY_HOUR;
+                System.out.println("Employee Parttime");
+                break;
+            default:
+                empHrs = 0;
+                System.out.println("Employe is Absent");
         }
-        System.out.println("Daily Employee Wage :"+calcEmpWage);
-    }
+        calcEmpWage = empHrs * WAGE_PER_HOUR;
+        System.out.println("Employee Wage :"+calcEmpWage);
+            }
 }
