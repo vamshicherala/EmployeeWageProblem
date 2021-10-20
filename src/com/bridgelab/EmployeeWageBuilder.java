@@ -13,10 +13,13 @@ public class EmployeeWageBuilder {
 
     public static void main(String[] args) {
         System.out.println("**Welcome to Employee Wage Computation Program On Master Branch**");
-        Random rand = new Random();
+        employeeWage();
+    }
+    static void employeeWage(){
         int calcEmpWage = 0;
         int empHrs = 0;
         int totalEmpHours = 0,totalWorkingDays = 0,totalEmpWage = 0;
+        Random rand = new Random();
         while (totalEmpHours<=MAX_WORKING_HOURS && totalWorkingDays < NO_OF_WORKING_DAYS){
             totalWorkingDays++;
             int empcheck = (int) (rand.nextFloat() * 10) % 3;
